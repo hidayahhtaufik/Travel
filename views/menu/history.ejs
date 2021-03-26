@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <% include ("../partials/headAfterLogin") %>
+
+  </head>
+  <style media="screen">
+  #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+  }
+
+  #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+  #customers tr:hover {background-color: #ddd;}
+
+  #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+  }
+  </style>
+  <body>
+    <br>
+    <br>
+    <br>
+    <table id="customers">
+    <tr>
+      <th>Flight Schedule</th>
+      <th>Airline</th>
+      <th>Destination</th>
+      <th>Price</th>
+      <th>Payment Date</th>
+    </tr>
+
+        <% data_tiket.forEach(list=>{ %>
+        <tr>
+          <td><%= list.flightSchedule %></td>
+          <td><%= list.namaPesawat %></td>
+          <td><%= list.destination %></td>
+          <td><%= list.price %></td>
+          <td><%= list.createdAt %></td>
+        </tr>
+        <% })%>
+
+  </table>
+  </body>
+</html>

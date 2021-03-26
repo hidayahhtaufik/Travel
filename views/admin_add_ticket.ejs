@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <% include ("./partials/header_admin") %>
+
+    <title></title>
+  </head>
+  <body>
+
+    <form action="/admin/addTicket" method="post">
+      Nama Maskapai:<br>
+      <input type="text" name="nama_pesawat" value="">
+      <br>
+      Jumlah Kursi:<br>
+      <input type="text" name="seats" value="">
+      <br>
+      Harga:<br>
+      <input type="text" name="price" value="">
+      <br>
+      Tujuan:<br>
+      <input type="text" name="destination" value="">
+      <br>
+      Tanggal Penerbangan:<br>
+      <input id="date" type="date" name="flight_schedule" value="">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>

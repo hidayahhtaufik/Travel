@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+  <% include ("../partials/headAfterLogin") %>
+
+</head>
+
+<style media="screen">
+
+	* { margin: 0; padding: 0; }
+	body { font: 14px/1.4 Georgia, serif; }
+	#page-wrap { width: 800px; margin: 0 auto; }
+
+	table { border-collapse: collapse; }
+	table td, table th { border: 1px solid black; padding: 5px; }
+
+	#header { height: 40px; width: 100%; margin: 20px 0; background: #222; text-align: center; color: white; font: bold 15px Helvetica, Sans-Serif; text-decoration: uppercase; letter-spacing: 20px; padding: 8px 0px; }
+
+	#address { width: 250px; height: 150px; font-size: 20; float: left; }
+
+	#items { clear: both; width: 100%; margin: 30px 0 0 0; border: 1px solid black; }
+	#items th { background: #eee; }
+	#items tr.item-row td { border: 0; vertical-align: top; }
+	#items td.description { width: 300px; }
+	#items td.item-name { width: 175px; }
+	#items td.description textarea, #items td.item-name textarea { width: 100%; }
+	#items td.total-line { border-right: 0; text-align: right; }
+	#items td.total-value { border-left: 0; padding: 10px; }
+	#items td.total-value textarea { height: 20px; background: none; }
+	#items td.balance { background: #eee; }
+	#items td.blank { border: 0; }
+
+	#terms { text-align: center; margin: 20px 0 0 0; }
+	#terms h5 { text-transform: uppercase; font: 13px Helvetica, Sans-Serif; letter-spacing: 10px; border-bottom: 1px solid black; padding: 0 0 8px 0; margin: 0 0 8px 0; }
+
+	textarea:hover, textarea:focus, #items td.total-value textarea:hover, #items td.total-value textarea:focus, .delete:hover { background-color:#EEFF88; }
+
+	.delete-wpr { position: relative; }
+	.delete { display: block; color: #000; text-decoration: none; position: absolute; background: #EEEEEE; font-weight: bold; padding: 0px 3px; border: 1px solid; top: -6px; left: -22px; font-family: Verdana; font-size: 12px; }
+</style>
+
+<body>
+
+  <form action="/menu/minusQty/<%= listDataTicket.id %>" method="post">
+
+	<div id="page-wrap">
+
+		<h1 id="header">INVOICE</h1>
+
+		<div id="identity">
+      <br><br><br>
+
+            <label id="address">Travelia<br>
+																Sillicon Valley<br>
+																Callifornia, USA 234567897<br>
+																Phone: (555) 555-5555</label>
+
+		</div>
+
+		<div style="clear:both"></div>
+
+		<div id="customer">
+
+            <table id="meta">
+
+            </tbody></table>
+
+		</div>
+
+    <table id="items">
+
+      <tbody><tr>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Date</th>
+      </tr>
+
+      <tr class="item-row">
+          <td class="item-name" style="text-align: center;"><div class="delete-wpr"><label><%= listDataTicket.nama_pesawat %> - <%= listDataTicket.destination %></label><a class="delete" href="javascript:;" title="Remove row" style="display: none;">X</a></div></td>
+          <td class="description" style="text-align: center;"><%= listDataTicket.price %></td>
+          <td><label id="date"><%= new Date %></label></td>
+      </tr>
+
+    </tbody></table>
+
+		<div id="terms">
+
+      <input id="header" type="submit" value="     CONFIRM     ">
+
+		</div>
+
+	</div>
+
+</body>
+</div>
+
+</html>
