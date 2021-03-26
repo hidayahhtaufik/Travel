@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ("../partials/headAfterLogin") %>
+
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1495a7;
+    color: white;
+}
+</style>
+</head>
+<body>
+<form action="/transaction/:id" method="post">
+  <table id="customers">
+  <tr>
+    <th>Flight Schedule</th>
+    <th>Airline</th>
+    <th>Destination</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Action</th>
+  </tr>
+
+      <% listDataTickets.forEach(list=>{ %>
+      <tr>
+        <td><%= list.flight_schedule %></td>
+        <td><%= list.nama_pesawat %></td>
+        <td><%= list.destination %></td>
+        <td><%= list.seats %></td>
+        <td><%= list.price %></td>
+        <td><a href="transaction/<%= list.id %>"> BUY </a></td>
+      </tr>
+      <% })%>
+
+</table>
+
+</form>
+
+
+</body>
+</html>

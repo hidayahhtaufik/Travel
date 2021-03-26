@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <% include ("../partials/header_admin") %>
+
+    <title></title>
+  </head>
+  <body>
+
+    <form action="/admin/editTicket/<%= data.id %>" method="post">
+      Nama Maskapai:<br>
+      <input type="text" name="namaPesawat" value="<%= data.namaPesawat %>">
+      <br>
+      Jumlah Kursi:<br>
+      <input type="text" name="seats" value="<%= data.seats %>">
+      <br>
+      Harga:<br>
+      <input type="text" name="price" value="<%= data.price %>">
+      <br>
+      Tujuan:<br>
+      <input type="text" name="destination" value="<%= data.destination %>">
+      <br>
+      Tanggal Penerbangan:<br>
+      <input id="date" type="date" name="flightSchedule" value="<%= data.flightSchedule %>">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>
