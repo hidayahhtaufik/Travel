@@ -2,7 +2,6 @@ const Model = require("../models");
 const router = require("express").Router();
 const session = require("express-session");
 
-
 class Controller {
   static listView(req, res) {
     Model.Ticket.findAll({
@@ -21,14 +20,14 @@ class Controller {
       });
   }
 
-  static findAll(req, res){
+  static findAll(req, res) {
     Model.Ticket.findAll()
-      .then(data =>{
-        res.render('search_menu', {data})
+      .then((data) => {
+        res.render("search_menu", { data });
       })
-      .catch(err =>{
-        res.send(err.message)
-      })
+      .catch((err) => {
+        res.send(err.message);
+      });
   }
 
   static buyingTicket(req, res) {
@@ -91,25 +90,27 @@ class Controller {
       TicketId: req.params.id,
       CustomerId: req.session.idCustomer,
     };
-    Model.Ticket
-    .findOne({
+    Model.Ticket.findOne({
       where: { id: req.params.id },
     })
-    .then((data) => {
-      const update_qty = {
-        nama_pesawat: data.nama_pesawat,
-        seats: data.seats - 1,
-        price: data.price,
-        flight_schedule: data.flight_schedule,
-        destination: data.destination,
-      };
-
-      Model.Ticket.update(update_qty, { where: { id: req.params.id } });
-      Model.TicketCustomer.create(conjungtionID)
+      .then((data) => {
+        const update_qty = {
+          nama_pesawat: data.nama_pesawat,
+          seats: data.seats - 1,
+          price: data.price,
+          flight_schedule: data.flight_schedule,
+          destination: data.destination,
+        };
+        return Model.Ticket.update(update_qty, {
+          where: { id: req.params.id },
+        });
+      })
       .then((result) => {
-        res.render("search_menu.ejs");
+        res.redirect("/menu/search");
+      })
+      .catch((err) => {
+        res.send(err.message);
       });
-    });
   }
 }
 
